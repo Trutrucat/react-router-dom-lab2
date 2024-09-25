@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
 
-function MailboxForm() {
+function MailboxForm({ mailboxes, addBox }) {
   const [boxSize, setBoxSize] = useState('');
   const [boxholder, setBoxholder] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    const newMailbox = {
+        _id: mailboxes.length + 1,
+        boxSize: boxSize,
+        boxholder: boxholder,
+    }
+    addBox(newMailbox)
+    setBoxSize('')
+    setBoxholder('')
   };
 
   return (
